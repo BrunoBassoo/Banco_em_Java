@@ -8,7 +8,7 @@ Na aba gerente, voce encontrará vários gerenciamentos de contar, desde criar u
 
 Na aba cliente, voce poderá fazer as operações básicas de um simples banco.
 
-O diferencial desse banco são os nossos códigos, sempre separados para maior visualização e organização. Ademais, usamos os 4 pilares da P.O.O. (Programação Orientada à Objetos)
+O diferencial desse banco são os nossos códigos, sempre separados para maior visualização e organização, usando o princípio de MVC (Model, View e Controller). Ademais, usamos os 4 pilares da P.O.O. (Programação Orientada à Objetos)
 como, Herança, Polimosfirmo, Encapsulamento e Abstração.
 
 Espero que goste do nosso banco que fizemos com muito amor e dedicação.
