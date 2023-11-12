@@ -1,5 +1,11 @@
 package views;
 
+import ControllerGerente.ControllerLoginGerente;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JToggleButton;
+
 /**
  *
  * @author uniebrunosilva
@@ -11,7 +17,82 @@ public class EntrarGerente extends javax.swing.JFrame {
      */
     public EntrarGerente() {
         initComponents();
+        control = new ControllerLoginGerente(this);
     }
+
+    public JToggleButton getBtEntrar() {
+        return btEntrar;
+    }
+
+    public void setBtEntrar(JToggleButton btEntrar) {
+        this.btEntrar = btEntrar;
+    }
+
+    public JToggleButton getBtVoltar() {
+        return btVoltar;
+    }
+
+    public void setBtVoltar(JToggleButton btVoltar) {
+        this.btVoltar = btVoltar;
+    }
+
+    public JTextField getEntrada_cpf() {
+        return entrada_cpf;
+    }
+
+    public void setEntrada_cpf(JTextField entrada_cpf) {
+        this.entrada_cpf = entrada_cpf;
+    }
+
+    public JTextField getEntrada_senha() {
+        return entrada_senha;
+    }
+
+    public void setEntrada_senha(JTextField entrada_senha) {
+        this.entrada_senha = entrada_senha;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -25,10 +106,10 @@ public class EntrarGerente extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtLoginCliente = new javax.swing.JTextField();
+        entrada_cpf = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtSenhaCliente = new javax.swing.JTextField();
+        entrada_senha = new javax.swing.JTextField();
         btEntrar = new javax.swing.JToggleButton();
         btVoltar = new javax.swing.JToggleButton();
 
@@ -46,7 +127,7 @@ public class EntrarGerente extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Login:");
+        jLabel2.setText("CPF:");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -84,7 +165,7 @@ public class EntrarGerente extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtLoginCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(entrada_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -92,7 +173,7 @@ public class EntrarGerente extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(txtSenhaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(entrada_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(122, 122, 122)
                                 .addComponent(btEntrar)))))
@@ -106,11 +187,11 @@ public class EntrarGerente extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLoginCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(entrada_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSenhaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(entrada_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEntrar)
@@ -155,8 +236,7 @@ public class EntrarGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_btVoltarActionPerformed
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
-        Gerente g = new Gerente();
-        g.setVisible(true);
+        control.LogarGerente();
         // TODO add your handling code here:
     }//GEN-LAST:event_btEntrarActionPerformed
 
@@ -195,15 +275,16 @@ public class EntrarGerente extends javax.swing.JFrame {
 //        });
 //    }
 
+    private ControllerLoginGerente control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btEntrar;
     private javax.swing.JToggleButton btVoltar;
+    private javax.swing.JTextField entrada_cpf;
+    private javax.swing.JTextField entrada_senha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField txtLoginCliente;
-    private javax.swing.JTextField txtSenhaCliente;
     // End of variables declaration//GEN-END:variables
 }

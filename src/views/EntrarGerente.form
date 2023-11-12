@@ -78,7 +78,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel2" min="-2" pref="98" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txtLoginCliente" min="-2" pref="190" max="-2" attributes="0"/>
+                              <Component id="entrada_cpf" min="-2" pref="190" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -88,7 +88,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txtSenhaCliente" min="-2" pref="190" max="-2" attributes="0"/>
+                                      <Component id="entrada_senha" min="-2" pref="190" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
@@ -109,12 +109,12 @@
                       <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="txtLoginCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="entrada_cpf" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="txtSenhaCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="entrada_senha" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -139,7 +139,7 @@
                 <Property name="text" type="java.lang.String" value="LOGIN DO GERENTE!"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtLoginCliente">
+            <Component class="javax.swing.JTextField" name="entrada_cpf">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
@@ -150,7 +150,7 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Login:"/>
+                <Property name="text" type="java.lang.String" value="CPF:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
@@ -165,7 +165,7 @@
                 <Property name="text" type="java.lang.String" value="Senha:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtSenhaCliente">
+            <Component class="javax.swing.JTextField" name="entrada_senha">
             </Component>
             <Component class="javax.swing.JToggleButton" name="btEntrar">
               <Properties>
