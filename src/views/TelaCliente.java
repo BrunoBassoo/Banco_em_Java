@@ -209,6 +209,8 @@ public class TelaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_extratoActionPerformed
 
     private void botao_depositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_depositoActionPerformed
+        Deposito d = new Deposito();
+        d.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_botao_depositoActionPerformed
 

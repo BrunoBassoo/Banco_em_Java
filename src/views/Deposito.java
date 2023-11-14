@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import ControllerCliente.ControllerDeposito;
 
 /**
  *
@@ -20,6 +21,7 @@ public class Deposito extends javax.swing.JFrame {
      */
     public Deposito() {
         initComponents();
+        control = new ControllerDeposito(this);
     }
 
     public JButton getBtCadastroCliente1() {
@@ -101,6 +103,22 @@ public class Deposito extends javax.swing.JFrame {
     public void setTxtSenhaCliente(JTextField txtSenhaCliente) {
         this.txtSenhaCliente = txtSenhaCliente;
     }
+
+    public JTextField getEntrada_tipo() {
+        return entrada_tipo;
+    }
+
+    public void setEntrada_tipo(JTextField entrada_tipo) {
+        this.entrada_tipo = entrada_tipo;
+    }
+
+    public JTextField getEntrada_valor() {
+        return entrada_valor;
+    }
+
+    public void setEntrada_valor(JTextField entrada_valor) {
+        this.entrada_valor = entrada_valor;
+    }
     
     
 
@@ -124,7 +142,7 @@ public class Deposito extends javax.swing.JFrame {
         btDeposito = new javax.swing.JButton();
         btCadastroCliente1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        entrada_saldo = new javax.swing.JTextField();
+        entrada_valor = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         entrada_tipo = new javax.swing.JTextField();
 
@@ -210,7 +228,7 @@ public class Deposito extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                             .addGap(131, 131, 131)
-                            .addComponent(entrada_saldo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(entrada_valor, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addGap(11, 11, 11)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -238,7 +256,7 @@ public class Deposito extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(entrada_saldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(entrada_valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btDeposito)
@@ -301,6 +319,7 @@ public class Deposito extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDepositoActionPerformed
+        control.depositar();
         // TODO add your handling code here:
     }//GEN-LAST:event_btDepositoActionPerformed
 
@@ -343,12 +362,12 @@ public class Deposito extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
+    private ControllerDeposito control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastroCliente1;
     private javax.swing.JButton btDeposito;
-    private javax.swing.JTextField entrada_saldo;
     private javax.swing.JTextField entrada_tipo;
+    private javax.swing.JTextField entrada_valor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

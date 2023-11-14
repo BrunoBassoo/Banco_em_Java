@@ -30,6 +30,17 @@ public class DB_Cliente {
         ResultSet resultado = statement.getResultSet();
         return resultado;
     }
+    
+    public ResultSet VerificacaoCliente (Cliente cliente) throws SQLException{
+        // usando o string sql = "'select *from' cliente 'where' cpf = ? and senha = ?"
+        // foi feito para SELECIONAR tal informacao
+        String sql = "select * from cliente where cpf = ?";
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1, cliente.getCpf());
+        statement.execute();
+        ResultSet resultado = statement.getResultSet();
+        return resultado;
+    }
     // usando o string sql = "'insert' 'into'cliente"
     // , foi feito para INSERIR tal informacao
     public void inserir(Cliente cliente)  throws SQLException{
@@ -48,9 +59,12 @@ public class DB_Cliente {
     
     //DUVIDA DO DEBITAR, ESTA DANDO ERRO DE CONEXAO!
     public void debitar(Cliente cliente,double valor_deb) throws SQLException{
-        String sql = "update cliente set saldo = ? where cpf and senha = ?";
+        String sql = "update cliente set saldo = ? where cpf = ? and senha = ?";
         PreparedStatement statement = conn.prepareStatement(sql); 
-        statement.setDouble(1, cliente.getSaldo() - valor_deb); // erro aq
+        System.out.println(cliente.getSaldo());
+        statement.setDouble(1, cliente.getSaldo() - valor_deb); 
+        // for para percorrer o banco de dados e achar o cpf
+        // equivalente ao cpf e a senha na qual o cliente digitou.
         statement.setString(2,cliente.getCpf());
         statement.setString(3,cliente.getSenha());
         statement.execute();
@@ -61,6 +75,8 @@ public class DB_Cliente {
     public void deposito(Cliente cliente,double valor_dep) throws SQLException{
         String sql = "update cliente set saldo = ? where cpf and senha = ?";
         PreparedStatement statement = conn.prepareStatement(sql); 
+        // for para percorrer o banco de dados e achar o cpf
+        // equivalente ao cpf e a senha na qual o cliente digitou.
         statement.setDouble(1, cliente.getSaldo() + valor_dep); // erro aq
         statement.setString(2,cliente.getCpf());
         statement.setString(3,cliente.getSenha());

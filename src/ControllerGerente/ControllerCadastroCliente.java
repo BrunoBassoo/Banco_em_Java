@@ -29,10 +29,14 @@ public class ControllerCadastroCliente {
         
         // pessando os valores para o objeto Cliente
         Cliente cliente = new Cliente(nome,senha,CPF,saldo);
+        String cliente_cpf = cliente.getCpf();
         conexao_banco conexao = new conexao_banco();
         try{
             Connection conn = conexao.getConnection();
             DB_Cliente db = new DB_Cliente(conn);
+//            for(int cpf = 0; cpf < conexao.length();cpf++){
+//                cliente_cpf != db.VerificacaoCliente(cliente);
+//            }
             db.inserir(cliente);
             JOptionPane.showMessageDialog(view, "Cliente cadastrado!", "Aviso",JOptionPane.INFORMATION_MESSAGE);
     } catch(SQLException e){
