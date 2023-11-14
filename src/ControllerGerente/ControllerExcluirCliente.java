@@ -1,4 +1,4 @@
-package ControllerCliente;
+package ControllerGerente;
 
 import DB.DB_Cliente;
 import DB.conexao_banco;
@@ -17,6 +17,11 @@ public class ControllerExcluirCliente {
     public ControllerExcluirCliente(ExcluirCliente view) {
         this.view = view;
     }
+    
+    // excluir cliente
+    
+    
+    
     
     public void Excluir(){
 

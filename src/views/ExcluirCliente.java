@@ -4,7 +4,7 @@
  */
 package views;
 
-import ControllerCliente.ControllerExcluirCliente;
+import ControllerGerente.ControllerExcluirCliente;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;

@@ -19,7 +19,11 @@ public class Cliente extends Pessoa{
     public Cliente(String cpf) {
         super(cpf);
     }
-    
+
+    public Cliente( String cpf, String senha, double saldo) {
+        super(cpf, senha);
+        this.saldo = saldo;
+    }
 
     public double getSaldo() {
         return saldo;

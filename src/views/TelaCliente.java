@@ -4,12 +4,12 @@ package views;
  *
  * @author uniebrunosilva
  */
-public class Cliente extends javax.swing.JFrame {
+public class TelaCliente extends javax.swing.JFrame {
 
     /**
      * Creates new form Cliente
      */
-    public Cliente() {
+    public TelaCliente() {
         initComponents();
     }
 
@@ -199,6 +199,8 @@ public class Cliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botao_debitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_debitoActionPerformed
+        Debito d = new Debito();
+        d.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_botao_debitoActionPerformed
 

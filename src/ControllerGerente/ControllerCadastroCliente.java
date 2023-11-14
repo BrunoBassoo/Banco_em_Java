@@ -1,4 +1,4 @@
-package ControllerCliente;
+package ControllerGerente;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -18,6 +18,7 @@ public class ControllerCadastroCliente {
         this.view = view;
     }
     
+    // salvar novo cliente
     public void salvarNovoCliente(){
         
         //pegando os valores que a pessoa colocou nos campos
@@ -28,7 +29,6 @@ public class ControllerCadastroCliente {
         
         // pessando os valores para o objeto Cliente
         Cliente cliente = new Cliente(nome,senha,CPF,saldo);
-
         conexao_banco conexao = new conexao_banco();
         try{
             Connection conn = conexao.getConnection();

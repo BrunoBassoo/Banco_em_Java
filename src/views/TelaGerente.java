@@ -1,17 +1,17 @@
 package views;
 
-import ControllerCliente.ControllerListarClientes;
+import ControllerGerente.ControllerListarClientes;
 
 /**
  *
  * @author uniebrunosilva
  */
-public class Gerente extends javax.swing.JFrame {
+public class TelaGerente extends javax.swing.JFrame {
 
     /**
      * Creates new form Gerente
      */
-    public Gerente() {
+    public TelaGerente() {
         initComponents();
         control = new ControllerListarClientes(this);
     }

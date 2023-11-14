@@ -1,6 +1,6 @@
 package views;
 
-import ControllerCliente.ControllerCadastroCliente;
+import ControllerGerente.ControllerCadastroCliente;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -233,10 +233,12 @@ public class CadastrarNovoCliente extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel2.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("NOVO CLIENTE!");
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Insira correamente os dados abaixo:");
 
@@ -244,23 +246,28 @@ public class CadastrarNovoCliente extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Nome:");
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("CPF:");
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Senha:");
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Saldo:");
 
         btCadastroCliente.setBackground(new java.awt.Color(51, 255, 51));
         btCadastroCliente.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btCadastroCliente.setForeground(new java.awt.Color(0, 0, 0));
         btCadastroCliente.setText("Cadastrar!");
         btCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

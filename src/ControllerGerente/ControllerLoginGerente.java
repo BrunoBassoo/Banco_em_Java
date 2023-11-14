@@ -1,40 +1,42 @@
-package ControllerCliente;
 
-import DB.DB_Cliente;
+package ControllerGerente;
+
+import DB.DB_Gerente;
 import DB.conexao_banco;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import model.Cliente;
-import views.EntrarCliente;
-import views.TelaCliente;
+import model.Gerente;
+import views.EntrarGerente;
+import views.TelaGerente;
 
 /**
  *
  * @author T-Gamer
  */
-public class ControllerLoginCliente {
-    private EntrarCliente view;
+public class ControllerLoginGerente {
+    private EntrarGerente view;
 
-    public ControllerLoginCliente(EntrarCliente view) {
+    public ControllerLoginGerente(EntrarGerente view) {
         this.view = view;
     }
     
-    public void loginCliente(){
+    // fazer o login do gerente
+    public void LogarGerente(){
         String cpf = view.getEntrada_cpf().getText();
         String senha = view.getEntrada_senha().getText();
-        Cliente cliente = new Cliente(cpf,senha);
+        Gerente gerente = new Gerente(cpf,senha);
         conexao_banco conexao = new conexao_banco();
         try{
             Connection conn = conexao.getConnection();
-            DB_Cliente db = new DB_Cliente(conn);
-            System.out.println("a");
-            ResultSet res = db.consultarCliente(cliente);
+            DB_Gerente db = new DB_Gerente(conn);
+            
+            ResultSet res = db.consultarGerente(gerente);
             if(res.next()){
                 JOptionPane.showMessageDialog(view, "Login Feito", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-                TelaCliente tc = new TelaCliente();
-                tc.setVisible(true);
+                TelaGerente tg = new TelaGerente();
+                tg.setVisible(true);
                 view.setVisible(false);
             } else{
                 JOptionPane.showMessageDialog(view, "Login não efetuado", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -46,3 +48,4 @@ public class ControllerLoginCliente {
         }
     }
 }
+
