@@ -6,8 +6,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
-import javax.swing.JTable;
 import views.ListarClientela;
+import javax.swing.JList;
+import javax.swing.ListModel;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -28,22 +30,30 @@ public class ControllerListarClientes {
             System.out.println(conn.isValid(1));
             DB_Gerente db = new DB_Gerente(conn);
             ResultSet res = db.listarCliente();
-            int c = 1;
-            //JTable tabela = view.getJTable();
+            JList<String> lista = this.view.getjList();
+            DefaultListModel<String> model = new DefaultListModel<String>();
+            ListModel lModel = lista.getModel();
             while(res.next()){
-                
-                System.out.println("------------");
-                System.out.println("Cliente " + c);
+                String temp = "";
                 for(int i = 0; i < 2; i++){
-                    //tableModel.insertRow(res.getString(i + 1));
+                    temp += res.getString(i + 1);
+                    temp += "               ";
                 } 
                 for(int i = 3; i < 7; i++){
-                   // tableModel.insertRow(res.getString(i + 1));
+                    if(res.getString(i + 1) == null){
+                        temp += "false";
+                        temp += "               ";
+                    }
+                    else{
+                        temp += res.getString(i + 1);
+                        temp += "               ";
+                    }
                 }
-                c++;
+                model.addElement(temp);
             }
-    } catch (SQLException e){
-        JOptionPane.showMessageDialog(view, "Erro de conexão", "Erro", JOptionPane.ERROR_MESSAGE);
+            lista.setModel(model);
+        } catch (SQLException e){
+            JOptionPane.showMessageDialog(view, "Erro de conexão", "Erro", JOptionPane.ERROR_MESSAGE);
     }
         
         
