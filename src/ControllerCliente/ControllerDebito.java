@@ -2,6 +2,7 @@ package ControllerCliente;
 import DB.DB_Cliente;
 import DB.conexao_banco;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import model.Cliente;
@@ -26,8 +27,11 @@ public class ControllerDebito {
         try{
             Connection conn = conexao.getConnection();
             DB_Cliente db = new DB_Cliente(conn);
-            db.debitar(cliente,valor_debito);
-            JOptionPane.showMessageDialog(view,"Debito efetuado!","alerta",JOptionPane.INFORMATION_MESSAGE );
+            ResultSet res = db.consultarCliente(cliente);
+            if(res.next()){
+                cliente.setSaldo(res.getDouble("saldo"));
+                db.deposito(cliente, valor_debito);
+            }
         } catch( SQLException e){
             JOptionPane.showMessageDialog(view, "Erro de conexão, tente novamente!", "Aviso", JOptionPane.ERROR_MESSAGE);
         e.printStackTrace();

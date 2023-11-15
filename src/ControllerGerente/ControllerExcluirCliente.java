@@ -36,7 +36,6 @@ public class ControllerExcluirCliente {
             Connection conn = conexao.getConnection();
             DB_Cliente db = new DB_Cliente(conn);
             db.remover(cliente);
-            JOptionPane.showMessageDialog(view,"Cliente removido!","alerta",JOptionPane.INFORMATION_MESSAGE );
         } catch( SQLException e){
             JOptionPane.showMessageDialog(view, "Erro de conexão, tente novamente!", "Aviso", JOptionPane.ERROR_MESSAGE);
         e.printStackTrace();

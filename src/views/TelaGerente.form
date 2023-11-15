@@ -164,7 +164,7 @@
                           <Component id="botao_cadastrar_cliente" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="botao_listas_contas" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" pref="21" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButton2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="botao_saldo_contas" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>

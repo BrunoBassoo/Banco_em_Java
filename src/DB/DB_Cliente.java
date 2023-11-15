@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import model.Cliente;
 import model.Gerente;
 
@@ -29,29 +30,24 @@ public class DB_Cliente {
         statement.execute();
         ResultSet resultado = statement.getResultSet();
         return resultado;
-    }
+    }    
     
-    public ResultSet VerificacaoCliente (Cliente cliente) throws SQLException{
-        // usando o string sql = "'select *from' cliente 'where' cpf = ? and senha = ?"
-        // foi feito para SELECIONAR tal informacao
-        String sql = "select * from cliente where cpf = ?";
-        PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, cliente.getCpf());
-        statement.execute();
-        ResultSet resultado = statement.getResultSet();
-        return resultado;
-    }
-    // usando o string sql = "'insert' 'into'cliente"
+    // usando o string sql = "'insert' 'into' cliente"
     // , foi feito para INSERIR tal informacao
     public void inserir(Cliente cliente)  throws SQLException{
-        String sql = "insert into cliente (nome, cpf,senha, saldo) values ('" + 
+        // vereifica se o CPF ja existe
+        if(verificarExistenciaCliente(cliente.getCpf())){
+            JOptionPane.showMessageDialog(null, "CPF já existente. Não foi possível criar a conta!", "Aviso",JOptionPane.ERROR_MESSAGE);
+
+        }else{
+            String sql = "insert into cliente (nome, cpf,senha, saldo) values ('" + 
                 cliente.getNome() + "' , '" + cliente.getCpf() + "' , '" + 
                 cliente.getSenha() + "' , '" + cliente.getSaldo() + "')" ;
-        
-        PreparedStatement statement = conn.prepareStatement(sql);
-        statement.execute();
-        
-        conn.close();
+                JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!", "Aviso",JOptionPane.INFORMATION_MESSAGE);
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.execute();
+                conn.close();
+        }
     }
     
     // usando o string sql = "'update' cliente 'set' senha = ?'where' cpf = ?"
@@ -59,43 +55,58 @@ public class DB_Cliente {
     
     //DUVIDA DO DEBITAR, ESTA DANDO ERRO DE CONEXAO!
     public void debitar(Cliente cliente,double valor_deb) throws SQLException{
-        String sql = "update cliente set saldo = ? where cpf = ? and senha = ?";
-        PreparedStatement statement = conn.prepareStatement(sql); 
-        System.out.println(cliente.getSaldo());
-        statement.setDouble(1, cliente.getSaldo() - valor_deb); 
-        // for para percorrer o banco de dados e achar o cpf
-        // equivalente ao cpf e a senha na qual o cliente digitou.
-        statement.setString(2,cliente.getCpf());
-        statement.setString(3,cliente.getSenha());
-        statement.execute();
-        conn.close();
+        if(manusearCliente(cliente.getCpf(),cliente.getSenha())){
+            String sql = "update cliente set saldo = ? where cpf = ? and senha = ?";
+            PreparedStatement statement = conn.prepareStatement(sql); 
+            double valor_total = cliente.getSaldo() - valor_deb;
+            cliente.setSaldo(valor_total);
+            statement.setDouble(1, cliente.getSaldo()); 
+            statement.setString(2,cliente.getCpf());
+            statement.setString(3,cliente.getSenha());
+            JOptionPane.showMessageDialog(null,"Débito Efetuado com sucesso!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            statement.execute();
+            conn.close();
+        } else{
+            JOptionPane.showMessageDialog(null, "Cliente inexistente, tente novamente!", "Aviso",  JOptionPane.ERROR_MESSAGE);
+        }
+        
     }
     
     // está errado tambem, tanto como debitar (nao sei como ajeitar isso)
     public void deposito(Cliente cliente,double valor_dep) throws SQLException{
-        String sql = "update cliente set saldo = ? where cpf and senha = ?";
-        PreparedStatement statement = conn.prepareStatement(sql); 
-        // for para percorrer o banco de dados e achar o cpf
-        // equivalente ao cpf e a senha na qual o cliente digitou.
-        statement.setDouble(1, cliente.getSaldo() + valor_dep); // erro aq
-        statement.setString(2,cliente.getCpf());
-        statement.setString(3,cliente.getSenha());
-        statement.execute();
-        conn.close();
+        if(manusearCliente(cliente.getCpf(),cliente.getSenha())){
+            String sql = "update cliente set saldo = ? where cpf = ? and senha = ?";
+            double valor_total = cliente.getSaldo() + valor_dep;
+            cliente.setSaldo(valor_total);
+            PreparedStatement statement = conn.prepareStatement(sql); 
+            statement.setDouble(1, cliente.getSaldo());    
+            statement.setString(2,cliente.getCpf());            
+            statement.setString(3,cliente.getSenha());
+            JOptionPane.showMessageDialog(null,"Depósito Efetuado com sucesso!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            statement.execute();
+            conn.close();
+        }else{
+            JOptionPane.showMessageDialog(null, "Cliente inexistente, tente novamente!", "Aviso",  JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     // usando o string sql = "'delete from' cliente 'where' cpf =?"
     // , foi feito para DELETAR o cliente
     public void remover(Cliente cliente) throws SQLException{
-        String sql = "delete from cliente where cpf = ?";
-        PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, cliente.getCpf());
-        statement.execute();
-        conn.close();
+        // vereifica se o CPF ja existe
+        if(verificarExistenciaCliente(cliente.getCpf())){
+            String sql = "delete from cliente where cpf = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, cliente.getCpf());
+            JOptionPane.showMessageDialog(null, "Cliente excluido com sucesso!", "Aviso",JOptionPane.INFORMATION_MESSAGE);            
+            statement.execute();
+            conn.close();
+        } else{
+            JOptionPane.showMessageDialog(null, "Cliente inexistente!", "Aviso", JOptionPane.ERROR_MESSAGE);
+        }
         
     }
     
-    // GERENTE
     public ResultSet consultar (Gerente gerente) throws SQLException{
         // usando o string sql = "'select *from' cliente 'where' cpf = ? and senha = ?"
         // foi feito para SELECIONAR tal informacao
@@ -106,5 +117,26 @@ public class DB_Cliente {
         statement.execute();
         ResultSet resultado = statement.getResultSet();
         return resultado;
+    }
+    
+    public boolean verificarExistenciaCliente(String cpf) throws SQLException{
+        String sql = "select * from cliente where cpf = ?";
+        try(PreparedStatement statement = conn.prepareStatement(sql)){
+            statement.setString(1,cpf);
+            try(ResultSet resultado = statement.executeQuery()){
+                return resultado.next();
+            }
+        }
+    }
+    
+    public boolean manusearCliente(String cpf, String senha) throws SQLException{
+        String sql = "select * from cliente where cpf = ? and senha = ?";
+        try(PreparedStatement statement = conn.prepareStatement(sql)){
+            statement.setString(1,cpf);
+            statement.setString(2,senha);
+            try(ResultSet resultado = statement.executeQuery()){
+                return resultado.next();
+            }
+        }
     }
 }

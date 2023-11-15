@@ -26,23 +26,26 @@ public class ControllerCadastroCliente {
         String senha = view.getEntrada_senha().getText();
         String CPF = view.getEntrada_cpf().getText();
         double saldo = Double.parseDouble(view.getEntrada_saldo().getText());
-        
-        // pessando os valores para o objeto Cliente
-        Cliente cliente = new Cliente(nome,senha,CPF,saldo);
-        String cliente_cpf = cliente.getCpf();
-        conexao_banco conexao = new conexao_banco();
-        try{
-            Connection conn = conexao.getConnection();
-            DB_Cliente db = new DB_Cliente(conn);
-//            for(int cpf = 0; cpf < conexao.length();cpf++){
-//                cliente_cpf != db.VerificacaoCliente(cliente);
-//            }
-            db.inserir(cliente);
-            JOptionPane.showMessageDialog(view, "Cliente cadastrado!", "Aviso",JOptionPane.INFORMATION_MESSAGE);
-    } catch(SQLException e){
-        JOptionPane.showMessageDialog(view, "Erro de conexão, tente novamente!", "Aviso", JOptionPane.ERROR_MESSAGE);
-        e.printStackTrace();
-    }
-    }
+        if(nome.equals(null) && senha.equals(null) && CPF.equals(null)){
+            JOptionPane.showMessageDialog(view,"SELECIONE OS CAMPOS CORRETAMENTE!", "Aviso", JOptionPane.ERROR_MESSAGE);
+        }else{
+            // pessando os valores para o objeto Cliente
+            Cliente cliente = new Cliente(nome,senha,CPF,saldo);
+            String cliente_cpf = cliente.getCpf();
+            conexao_banco conexao = new conexao_banco();
+            try{
+                Connection conn = conexao.getConnection();
+                DB_Cliente db = new DB_Cliente(conn);
+                try{
+                    db.inserir(cliente);
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            } catch(SQLException e){
+                JOptionPane.showMessageDialog(view, "Erro de conexão, tente novamente!", "Aviso", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
+            }
+        }
+    }    
 }
 

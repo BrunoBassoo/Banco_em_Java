@@ -29,7 +29,6 @@ public class ControllerLoginCliente {
         try{
             Connection conn = conexao.getConnection();
             DB_Cliente db = new DB_Cliente(conn);
-            System.out.println("a");
             ResultSet res = db.consultarCliente(cliente);
             if(res.next()){
                 JOptionPane.showMessageDialog(view, "Login Feito", "Aviso", JOptionPane.INFORMATION_MESSAGE);

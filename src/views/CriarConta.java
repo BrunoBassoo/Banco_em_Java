@@ -1,15 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package views;
+
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author T-Gamer
  */
-public class CriarConta extends javax.swing.JFrame {
 
+public class CriarConta extends javax.swing.JFrame {
+    public String tipoDeConta;
     /**
      * Creates new form CriarConta
      */
@@ -26,6 +25,11 @@ public class CriarConta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton2 = new javax.swing.JButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -38,7 +42,10 @@ public class CriarConta extends javax.swing.JFrame {
         btSalario = new javax.swing.JButton();
         btCorrente = new javax.swing.JButton();
         btPoupanca = new javax.swing.JButton();
+        btContinuar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+
+        jButton2.setText("jButton2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,16 +73,31 @@ public class CriarConta extends javax.swing.JFrame {
         rbSalario.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
         rbSalario.setForeground(new java.awt.Color(255, 0, 0));
         rbSalario.setText("Salário");
+        rbSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbSalarioActionPerformed(evt);
+            }
+        });
 
         rbCorrente.setBackground(new java.awt.Color(102, 102, 102));
         rbCorrente.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
         rbCorrente.setForeground(new java.awt.Color(255, 153, 0));
         rbCorrente.setText("Corrente");
+        rbCorrente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbCorrenteActionPerformed(evt);
+            }
+        });
 
         rbPoupança.setBackground(new java.awt.Color(102, 102, 102));
         rbPoupança.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
         rbPoupança.setForeground(new java.awt.Color(255, 255, 0));
         rbPoupança.setText("Poupança");
+        rbPoupança.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbPoupançaActionPerformed(evt);
+            }
+        });
 
         btSalario.setBackground(new java.awt.Color(0, 0, 0));
         btSalario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -107,6 +129,16 @@ public class CriarConta extends javax.swing.JFrame {
             }
         });
 
+        btContinuar.setBackground(new java.awt.Color(255, 255, 255));
+        btContinuar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btContinuar.setForeground(new java.awt.Color(0, 0, 0));
+        btContinuar.setText("Continuar");
+        btContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btContinuarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -115,10 +147,6 @@ public class CriarConta extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -140,6 +168,15 @@ public class CriarConta extends javax.swing.JFrame {
                         .addComponent(btPoupanca, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(rbPoupança))
                 .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(btContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +195,9 @@ public class CriarConta extends javax.swing.JFrame {
                     .addComponent(btSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btPoupanca, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btCorrente, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(btContinuar)
+                .addGap(22, 22, 22))
         );
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
@@ -179,12 +218,12 @@ public class CriarConta extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(102, 102, 102)
+                                .addGap(93, 93, 93)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(82, 82, 82)
+                                .addGap(73, 73, 73)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 70, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -197,7 +236,7 @@ public class CriarConta extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -256,6 +295,36 @@ public class CriarConta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btPoupancaActionPerformed
 
+    private void btContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btContinuarActionPerformed
+        if(tipoDeConta == "salario"){
+            System.out.println("BUNDA");
+        }
+        else if(tipoDeConta == "corrente"){
+            System.out.println("PENIS");
+        }
+        else if(tipoDeConta == "poupanca"){
+            System.out.println("VAGÝNA");
+        } else{
+            JOptionPane.showMessageDialog(this,"Selecione o tipo da conta!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        }
+        // TODO add your handling code here
+    }//GEN-LAST:event_btContinuarActionPerformed
+
+    private void rbSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbSalarioActionPerformed
+        tipoDeConta = "salario";
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbSalarioActionPerformed
+
+    private void rbCorrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCorrenteActionPerformed
+        tipoDeConta = "corrente";
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbCorrenteActionPerformed
+
+    private void rbPoupançaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPoupançaActionPerformed
+        tipoDeConta = "poupanca";
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbPoupançaActionPerformed
+
 //    /**
 //     * @param args the command line arguments
 //     */
@@ -292,10 +361,16 @@ public class CriarConta extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btContinuar;
     private javax.swing.JButton btCorrente;
     private javax.swing.JButton btPoupanca;
     private javax.swing.JButton btSalario;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

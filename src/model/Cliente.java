@@ -26,7 +26,7 @@ public class Cliente extends Pessoa{
     }
 
     public double getSaldo() {
-        return saldo;
+        return this.saldo;
     }
 
     public void setSaldo(double saldo) {
