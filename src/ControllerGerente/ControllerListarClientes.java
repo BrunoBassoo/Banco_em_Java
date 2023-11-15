@@ -33,27 +33,41 @@ public class ControllerListarClientes {
             JList<String> lista = this.view.getjList();
             DefaultListModel<String> model = new DefaultListModel<String>();
             ListModel lModel = lista.getModel();
+            model.addElement("|Nome:             |CPF:              |Saldo:              |Conta Salário:      |Conta Corrente:      |Conta Poupança:");
             while(res.next()){
                 String temp = "";
+                int chracteres = 21;
+                int chracteres_rest;
                 for(int i = 0; i < 2; i++){
-                    temp += res.getString(i + 1);
-                    temp += "               ";
-                } 
+                    if(res.getString(i + 1).length() < chracteres){
+                        chracteres_rest = chracteres - (res.getString(i + 1).length());
+                        System.out.println(chracteres_rest);
+                        temp += res.getString(i + 1);
+                        for(int j = 0; j < chracteres_rest; j++){
+                            temp += " ";
+                        }
+                    }
+                }
                 for(int i = 3; i < 7; i++){
                     if(res.getString(i + 1) == null){
                         temp += "false";
-                        temp += "               ";
+                        temp += "              ";
                     }
-                    else{
+                    else if(res.getString(i + 1).length() < chracteres){
+                        chracteres_rest = chracteres - (res.getString(i + 1).length());
+                        System.out.println(chracteres_rest);
                         temp += res.getString(i + 1);
-                        temp += "               ";
+                        for(int j = 0; j < chracteres_rest; j++){
+                            temp += " ";
+                        }
+                        temp += res.getString(i + 1);
                     }
                 }
                 model.addElement(temp);
             }
             lista.setModel(model);
         } catch (SQLException e){
-            JOptionPane.showMessageDialog(view, "Erro de conexão", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(view, "Erro de conexão", "Erro", JOptionPane.ERROR_MESSAGE); 
     }
         
         
