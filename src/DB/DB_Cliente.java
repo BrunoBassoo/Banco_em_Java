@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import model.Cliente;
-import model.Gerente;
 
 /**
  *
@@ -107,17 +106,6 @@ public class DB_Cliente {
         
     }
     
-    public ResultSet consultar (Gerente gerente) throws SQLException{
-        // usando o string sql = "'select *from' cliente 'where' cpf = ? and senha = ?"
-        // foi feito para SELECIONAR tal informacao
-        String sql = "select * from gerente where cpf = ? and senha = ?";
-        PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, gerente.getCpf());
-        statement.setString(2, gerente.getSenha());
-        statement.execute();
-        ResultSet resultado = statement.getResultSet();
-        return resultado;
-    }
     
     public boolean verificarExistenciaCliente(String cpf) throws SQLException{
         String sql = "select * from cliente where cpf = ?";
@@ -139,4 +127,16 @@ public class DB_Cliente {
             }
         }
     }
-}
+    
+    public void criarConta(Cliente cliente, int conta) throws SQLException{
+        if(manusearCliente(cliente.getCpf(),cliente.getSenha())){
+            
+            String sql = "insert into cliente (conta) values ('" + 
+                cliente.getTipoConta() +  "')" ;
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.execute();
+                conn.close();
+        }
+    }
+ }
+

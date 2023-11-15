@@ -35,4 +35,13 @@ public class DB_Gerente {
         ResultSet resultado = statement.getResultSet();
         return resultado;
     }
+    
+    public ResultSet listarCliente() throws SQLException{
+        String sql = "select * from cliente";
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.execute();
+        ResultSet resultado = statement.getResultSet();
+        System.out.println(resultado);
+        return resultado;
+    }
 }

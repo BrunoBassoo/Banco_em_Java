@@ -1,6 +1,5 @@
 package views;
 
-import ControllerGerente.ControllerListarClientes;
 
 /**
  *
@@ -13,7 +12,6 @@ public class TelaGerente extends javax.swing.JFrame {
      */
     public TelaGerente() {
         initComponents();
-        control = new ControllerListarClientes(this);
     }
     
     
@@ -271,7 +269,8 @@ public class TelaGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_criar_contaActionPerformed
 
     private void botao_listas_contasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_listas_contasActionPerformed
-
+        ListarClientela lc = new ListarClientela();
+        lc.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_botao_listas_contasActionPerformed
 
@@ -309,7 +308,6 @@ public class TelaGerente extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-    private ControllerListarClientes control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botao_cadastrar_cliente;
     private javax.swing.JButton botao_criar_conta;

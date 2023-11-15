@@ -6,6 +6,7 @@ package model;
  */
 public class Cliente extends Pessoa{
     private double saldo;
+    private int tipoConta;
 
     public Cliente(String nome,String senha ,String cpf, double saldo) {
         super(nome, cpf, senha);
@@ -24,6 +25,23 @@ public class Cliente extends Pessoa{
         super(cpf, senha);
         this.saldo = saldo;
     }
+
+    public Cliente( String cpf, String senha, int tipoConta) {
+        super(cpf, senha);
+        this.tipoConta = tipoConta;
+    }
+    
+    
+
+    public int getTipoConta() {
+        return tipoConta;
+    }
+
+    public void setTipoConta(int tipoConta) {
+        this.tipoConta = tipoConta;
+    }
+    
+    
 
     public double getSaldo() {
         return this.saldo;

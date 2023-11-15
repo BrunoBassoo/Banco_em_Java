@@ -153,6 +153,8 @@ public class EntrarCliente extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Senha:");
 
+        entrada_senha.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
         btEntrar.setBackground(new java.awt.Color(102, 255, 102));
         btEntrar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btEntrar.setForeground(new java.awt.Color(0, 0, 0));
