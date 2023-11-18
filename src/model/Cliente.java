@@ -6,6 +6,9 @@ package model;
  */
 public class Cliente extends Pessoa{
     private double saldo;
+    private contaSalario s;
+    private contaPoupanca p;
+    private contaCorrente c;
     private int tipoConta;
 
     public Cliente(String nome,String senha ,String cpf, double saldo) {
@@ -25,13 +28,15 @@ public class Cliente extends Pessoa{
         super(cpf, senha);
         this.saldo = saldo;
     }
+    
 
-    public Cliente( String cpf, String senha, int tipoConta) {
-        super(cpf, senha);
-        this.tipoConta = tipoConta;
+    public double getSaldo() {
+        return this.saldo;
     }
-    
-    
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
 
     public int getTipoConta() {
         return tipoConta;
@@ -42,14 +47,6 @@ public class Cliente extends Pessoa{
     }
     
     
-
-    public double getSaldo() {
-        return this.saldo;
-    }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
 
     @Override
     public String toString() {

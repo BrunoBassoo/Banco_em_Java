@@ -33,12 +33,12 @@ public class ControllerListarClientes {
             JList<String> lista = this.view.getjList();
             DefaultListModel<String> model = new DefaultListModel<String>();
             ListModel lModel = lista.getModel();
-            String label1 = String.format("|%-20s|", "Nome:");
-            String label2 = String.format("%-15s|", "CPF:");
-            String label3 = String.format("%-15s|", "Saldo:");
-            String label4 = String.format("%-8s|", "CS:");
-            String label5 = String.format("%-8s|", "CC:");
-            String label6 = String.format("%-8s|", "CP:");
+            String label1 = String.format("|%-21s|", "Nome:");
+            String label2 = String.format("%-16s|", "CPF:");
+            String label3 = String.format("%-16s|", "Saldo:");
+            String label4 = String.format("%-9s|", "CS:");
+            String label5 = String.format("%-9s|", "CC:");
+            String label6 = String.format("%-9s|", "CP:");
 
             String finalLabel = label1.concat(label2).concat(label3).concat(label4).concat(label5).concat(label6);
 
@@ -48,16 +48,16 @@ public class ControllerListarClientes {
                 String clientName;
               if(res.getString("nome").length() >= 20){
                   clientName = res.getString("nome").substring(0, 17) + "...";
-                  clientName = String.format("|%-20s|", clientName);
+                  clientName = String.format("|%-21s|", clientName);
                 }
               else{
-                  clientName = String.format("|%-20s|", res.getString("nome"));
+                  clientName = String.format("|%-21s|", res.getString("nome"));
               }
-              String clientCPF = String.format("%15s|", res.getString("cpf"));
-              String clientSalario = String.format("%15s|", res.getString("saldo"));
-              String clientCS = String.format("%-8s|", res.getString("contaSalario"));
-              String clientCC = String.format("%-8s|", res.getString("contaCorrente"));
-              String clientCP = String.format("%-8s|", res.getString("contaPoupanca"));
+              String clientCPF = String.format("%16s|", res.getString("cpf"));
+              String clientSalario = String.format("%16s|", res.getString("saldo"));
+              String clientCS = String.format("%-9s|", res.getString("contaSalario"));
+              String clientCC = String.format("%-9s|", res.getString("contaCorrente"));
+              String clientCP = String.format("%-9s|", res.getString("contaPoupanca"));
 
               String clientFinalString = clientName.concat(clientCPF).concat(clientSalario).concat(clientCS).concat(clientCC).concat(clientCP);
               model.addElement(clientFinalString);
