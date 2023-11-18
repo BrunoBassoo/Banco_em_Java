@@ -6,11 +6,24 @@ package model;
  */
 public class Cliente extends Pessoa{
     private double saldo;
-    private contaSalario s;
-    private contaPoupanca p;
-    private contaCorrente c;
+    private contas c;
     private int tipoConta;
 
+    public Cliente( String cpf, String senha, contas c) {
+        super(cpf, senha);
+        this.c = c;
+    }
+
+    public contas getC() {
+        return c;
+    }
+
+    public void setC(contas c) {
+        this.c = c;
+    }
+    
+    
+   
     public Cliente(String nome,String senha ,String cpf, double saldo) {
         super(nome, cpf, senha);
         this.saldo = saldo;

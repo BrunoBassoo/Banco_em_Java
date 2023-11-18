@@ -7,6 +7,7 @@ import views.CriarConta;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -20,24 +21,25 @@ public class ControllerCriarConta {
         this.view = view;
     }
     
-    public void CriarTipoConta(int tipo){
+    public void CriarContaCorrente(){
         
         String cpf = view.getEntrada_cpf().getText();
         String senha = view.getEntrada_senha().getText();
-        int conta = tipo;
+        double valor = Double.parseDouble(view.getEntrada_valor().getText());
         
-        
-        Cliente cliente  = new Cliente(cpf,senha,conta);
+        Cliente cliente  = new Cliente(cpf,senha);
         conexao_banco conexao = new conexao_banco();
         try{
             Connection conn = conexao.getConnection();
             DB_Cliente db = new DB_Cliente(conn);
             ResultSet res = db.consultarCliente(cliente);
             if(res.next()){
-                
+                db.criarContaCorrente(cliente,valor);
+                JOptionPane.showMessageDialog(null, "Conta Corrente criada com sucesso!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             }
-            
         } catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Erro de conexão!", "Aviso", JOptionPane.ERROR_MESSAGE);
+            
             e.printStackTrace();
         }
         

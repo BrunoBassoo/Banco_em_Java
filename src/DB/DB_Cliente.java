@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import model.Cliente;
+import model.contas;
 
 /**
  *
@@ -127,16 +128,30 @@ public class DB_Cliente {
             }
         }
     }
+
     
-    public void criarConta(Cliente cliente, int conta) throws SQLException{
-        if(manusearCliente(cliente.getCpf(),cliente.getSenha())){
-            
-            String sql = "insert into cliente (conta) values ('" + 
-                cliente.getTipoConta() +  "')" ;
-                PreparedStatement statement = conn.prepareStatement(sql);
-                statement.execute();
-                conn.close();
+    public boolean verificarContaCorrente(double valorCorrente) throws SQLException{
+        String sql = "select * from cliente where contaCorrente = ?";
+        try(PreparedStatement statement = conn.prepareStatement(sql)){
+                statement.setDouble(1,valorCorrente);
+                JOptionPane.showMessageDialog(null, "Conta Corrente já existe!", "Aviso", JOptionPane.ERROR_MESSAGE);
+                
+                try(ResultSet resultado = statement.executeQuery()){
+                    return resultado.next();
+            }
         }
+    }
+    
+    public void criarContaCorrente(Cliente cliente,double valorCorrente) throws SQLException{
+        contas NovaContaCorrente = new contas();
+        String sql = "insert into cliente (contaCorrente) values ('" + 
+        NovaContaCorrente + "')" ;
+        JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!", "Aviso",JOptionPane.INFORMATION_MESSAGE);
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.execute();
+        conn.close();
+                
+
     }
  }
 

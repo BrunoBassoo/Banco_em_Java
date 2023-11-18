@@ -20,7 +20,6 @@ public class ControllerCadastroCliente {
     
     // salvar novo cliente
     public void salvarNovoCliente(){
-        
         //pegando os valores que a pessoa colocou nos campos
         String nome = view.getEntrada_nome().getText();
         String senha = view.getEntrada_senha().getText();
