@@ -33,39 +33,37 @@ public class ControllerListarClientes {
             JList<String> lista = this.view.getjList();
             DefaultListModel<String> model = new DefaultListModel<String>();
             ListModel lModel = lista.getModel();
-            model.addElement("|Nome:             |CPF:              |Saldo:              |Conta Salário:      |Conta Corrente:      |Conta Poupança:");
+            String label1 = String.format("|%-20s|", "Nome:");
+            String label2 = String.format("%-15s|", "CPF:");
+            String label3 = String.format("%-15s|", "Saldo:");
+            String label4 = String.format("%-8s|", "CS:");
+            String label5 = String.format("%-8s|", "CC:");
+            String label6 = String.format("%-8s|", "CP:");
+
+            String finalLabel = label1.concat(label2).concat(label3).concat(label4).concat(label5).concat(label6);
+
+            model.addElement(finalLabel);
+            
             while(res.next()){
-                String temp = "";
-                int chracteres = 21;
-                int chracteres_rest;
-                for(int i = 0; i < 2; i++){
-                    if(res.getString(i + 1).length() < chracteres){
-                        chracteres_rest = chracteres - (res.getString(i + 1).length());
-                        System.out.println(chracteres_rest);
-                        temp += res.getString(i + 1);
-                        for(int j = 0; j < chracteres_rest; j++){
-                            temp += " ";
-                        }
-                    }
+                String clientName;
+              if(res.getString("nome").length() >= 20){
+                  clientName = res.getString("nome").substring(0, 17) + "...";
+                  clientName = String.format("|%-20s|", clientName);
                 }
-                for(int i = 3; i < 7; i++){
-                    if(res.getString(i + 1) == null){
-                        temp += "false";
-                        temp += "              ";
-                    }
-                    else if(res.getString(i + 1).length() < chracteres){
-                        chracteres_rest = chracteres - (res.getString(i + 1).length());
-                        System.out.println(chracteres_rest);
-                        temp += res.getString(i + 1);
-                        for(int j = 0; j < chracteres_rest; j++){
-                            temp += " ";
-                        }
-                        temp += res.getString(i + 1);
-                    }
-                }
-                model.addElement(temp);
+              else{
+                  clientName = String.format("|%-20s|", res.getString("nome"));
+              }
+              String clientCPF = String.format("%15s|", res.getString("cpf"));
+              String clientSalario = String.format("%15s|", res.getString("saldo"));
+              String clientCS = String.format("%-8s|", res.getString("contaSalario"));
+              String clientCC = String.format("%-8s|", res.getString("contaCorrente"));
+              String clientCP = String.format("%-8s|", res.getString("contaPoupanca"));
+
+              String clientFinalString = clientName.concat(clientCPF).concat(clientSalario).concat(clientCS).concat(clientCC).concat(clientCP);
+              model.addElement(clientFinalString);
             }
             lista.setModel(model);
+            
         } catch (SQLException e){
             JOptionPane.showMessageDialog(view, "Erro de conexão", "Erro", JOptionPane.ERROR_MESSAGE); 
     }
