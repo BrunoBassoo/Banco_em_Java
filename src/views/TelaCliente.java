@@ -42,6 +42,7 @@ public class TelaCliente extends javax.swing.JFrame {
         jTextField1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Área do cliente");
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -201,20 +202,29 @@ public class TelaCliente extends javax.swing.JFrame {
     private void botao_debitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_debitoActionPerformed
         Debito d = new Debito();
         d.setVisible(true);
+        d.setTitle("Área de débito");
         // TODO add your handling code here:
     }//GEN-LAST:event_botao_debitoActionPerformed
 
     private void botao_extratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_extratoActionPerformed
+        extrato e = new extrato();
+        e.setVisible(true);
+        e.setTitle("Área do extrato");
+
         // TODO add your handling code here:
     }//GEN-LAST:event_botao_extratoActionPerformed
 
     private void botao_depositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_depositoActionPerformed
         Deposito d = new Deposito();
         d.setVisible(true);
+        d.setTitle("Área de depósito");
         // TODO add your handling code here:
     }//GEN-LAST:event_botao_depositoActionPerformed
 
     private void botao_saldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_saldoActionPerformed
+        ExibirSaldoCliente es = new ExibirSaldoCliente();
+        es.setVisible(true);
+        es.setTitle("Exibir saldo");
         // TODO add your handling code here:
     }//GEN-LAST:event_botao_saldoActionPerformed
 

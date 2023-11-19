@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import model.Cliente;
-import model.contas;
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 /**
  *
  * @author uniebrunosilva
@@ -40,55 +40,17 @@ public class DB_Cliente {
             JOptionPane.showMessageDialog(null, "CPF já existente. Não foi possível criar a conta!", "Aviso",JOptionPane.ERROR_MESSAGE);
 
         }else{
-            String sql = "insert into cliente (nome, cpf,senha, saldo) values ('" + 
+            String sql = "insert into cliente (nome, cpf, senha, contaSalario, contaCorrente, contaPoupanca) values ('" + 
                 cliente.getNome() + "' , '" + cliente.getCpf() + "' , '" + 
-                cliente.getSenha() + "' , '" + cliente.getSaldo() + "')" ;
-                JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!", "Aviso",JOptionPane.INFORMATION_MESSAGE);
-                PreparedStatement statement = conn.prepareStatement(sql);
-                statement.execute();
-                conn.close();
-        }
-    }
-    
-    // usando o string sql = "'update' cliente 'set' senha = ?'where' cpf = ?"
-    // , foi feito para ATUALIZAR/ o saldo
-    
-    //DUVIDA DO DEBITAR, ESTA DANDO ERRO DE CONEXAO!
-    public void debitar(Cliente cliente,double valor_deb) throws SQLException{
-        if(manusearCliente(cliente.getCpf(),cliente.getSenha())){
-            String sql = "update cliente set saldo = ? where cpf = ? and senha = ?";
-            PreparedStatement statement = conn.prepareStatement(sql); 
-            double valor_total = cliente.getSaldo() - valor_deb;
-            cliente.setSaldo(valor_total);
-            statement.setDouble(1, cliente.getSaldo()); 
-            statement.setString(2,cliente.getCpf());
-            statement.setString(3,cliente.getSenha());
-            JOptionPane.showMessageDialog(null,"Débito Efetuado com sucesso!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                cliente.getSenha() +  "' , '-10001' , '-10001' , '-10001')" ;
+            PreparedStatement statement = conn.prepareStatement(sql);
             statement.execute();
+            JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!", "Aviso",JOptionPane.INFORMATION_MESSAGE);
             conn.close();
-        } else{
-            JOptionPane.showMessageDialog(null, "Cliente inexistente, tente novamente!", "Aviso",  JOptionPane.ERROR_MESSAGE);
         }
-        
     }
+
     
-    // está errado tambem, tanto como debitar (nao sei como ajeitar isso)
-    public void deposito(Cliente cliente,double valor_dep) throws SQLException{
-        if(manusearCliente(cliente.getCpf(),cliente.getSenha())){
-            String sql = "update cliente set saldo = ? where cpf = ? and senha = ?";
-            double valor_total = cliente.getSaldo() + valor_dep;
-            cliente.setSaldo(valor_total);
-            PreparedStatement statement = conn.prepareStatement(sql); 
-            statement.setDouble(1, cliente.getSaldo());    
-            statement.setString(2,cliente.getCpf());            
-            statement.setString(3,cliente.getSenha());
-            JOptionPane.showMessageDialog(null,"Depósito Efetuado com sucesso!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-            statement.execute();
-            conn.close();
-        }else{
-            JOptionPane.showMessageDialog(null, "Cliente inexistente, tente novamente!", "Aviso",  JOptionPane.ERROR_MESSAGE);
-        }
-    }
     
     // usando o string sql = "'delete from' cliente 'where' cpf =?"
     // , foi feito para DELETAR o cliente
@@ -130,28 +92,63 @@ public class DB_Cliente {
     }
 
     
-    public boolean verificarContaCorrente(double valorCorrente) throws SQLException{
-        String sql = "select * from cliente where contaCorrente = ?";
-        try(PreparedStatement statement = conn.prepareStatement(sql)){
-                statement.setDouble(1,valorCorrente);
-                JOptionPane.showMessageDialog(null, "Conta Corrente já existe!", "Aviso", JOptionPane.ERROR_MESSAGE);
-                
-                try(ResultSet resultado = statement.executeQuery()){
-                    return resultado.next();
-            }
+    public Cliente getCliente(String cpf, String senha) throws SQLException{
+        String sql = "select * from cliente where cpf = ? and senha = ?";
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1, cpf);
+        statement.setString(2, senha);
+        statement.execute();
+        ResultSet resultado = statement.getResultSet();
+        resultado.next();
+        if(senha.equals(resultado.getString("senha"))){
+            return new Cliente( resultado.getString("nome"), resultado.getString("cpf"), resultado.getString("senha"), resultado.getDouble("contaSalario"), resultado.getDouble("contaCorrente"), resultado.getDouble("contaPoupanca"));
         }
+        return new Cliente("", "", "");
     }
     
-    public void criarContaCorrente(Cliente cliente,double valorCorrente) throws SQLException{
-        contas NovaContaCorrente = new contas();
-        String sql = "insert into cliente (contaCorrente) values ('" + 
-        NovaContaCorrente + "')" ;
-        JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!", "Aviso",JOptionPane.INFORMATION_MESSAGE);
+    
+    public boolean updateCliente(Cliente cliente) throws SQLException{
+        String sql = "update cliente set nome = ? , cpf = ? , senha = ? , contasalario = ? , contacorrente = ? , contapoupanca = ? where cpf = ? ";
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1, cliente.getNome());
+        statement.setString(2, cliente.getCpf());
+        statement.setString(3, cliente.getSenha());
+        statement.setDouble(4, cliente.getCs());
+        statement.setDouble(5, cliente.getCc());
+        statement.setDouble(6, cliente.getCp()); 
+        statement.setString(7, cliente.getCpf());
+        statement.execute();
+        conn.close();
+        return true;
+    }
+    
+    public Cliente getCliente(String cpf) throws SQLException{
+        String sql = "select * from cliente where cpf = ?";
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1, cpf);
+        statement.execute();
+        ResultSet resultado = statement.getResultSet();
+        resultado.next();
+        return new Cliente( resultado.getString("nome"), resultado.getString("cpf"), resultado.getString("senha"), resultado.getDouble("contaSalario"), resultado.getDouble("contaCorrente"), resultado.getDouble("contaPoupanca"));
+    }
+    
+    public boolean salvarTransacao(Cliente cliente ,String tipo, double valor, double taxa) throws SQLException{
+       String sql = "insert into transacoes (cpf, data, tipo, tarifa, valor, saldo) values ('" + 
+                cliente.getCpf() + "' , '" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")) + "' , '" + 
+                tipo +  "' , '" + taxa + "' , '" + valor + "' , '" + cliente.getCc() + "')";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.execute();
         conn.close();
-                
-
+        return true;
     }
- }
+    
+    public ResultSet getExtrato(String cpf) throws SQLException{
+        String sql = "select * from transacoes where cpf = ?";
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1,cpf);
+        statement.execute();
+        ResultSet resultado = statement.getResultSet();
+        return resultado;
+    }
+}
 

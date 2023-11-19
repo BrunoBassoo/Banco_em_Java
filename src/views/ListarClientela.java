@@ -127,6 +127,7 @@ public class ListarClientela extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel4.setFont(new java.awt.Font("Arial", 3, 60)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("CLIENTELA!");
 
@@ -142,11 +143,6 @@ public class ListarClientela extends javax.swing.JFrame {
         jList.setBackground(new java.awt.Color(102, 102, 102));
         jList.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         jList.setForeground(new java.awt.Color(255, 255, 255));
-        jList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(jList);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

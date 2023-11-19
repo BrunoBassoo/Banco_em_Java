@@ -57,13 +57,7 @@ public class CadastrarNovoCliente extends javax.swing.JFrame {
         this.entrada_nome = entrada_nome;
     }
 
-    public JTextField getEntrada_saldo() {
-        return entrada_saldo;
-    }
-
-    public void setEntrada_saldo(JTextField entrada_saldo) {
-        this.entrada_saldo = entrada_saldo;
-    }
+    
 
     public JTextField getEntrada_senha() {
         return entrada_senha;
@@ -129,13 +123,7 @@ public class CadastrarNovoCliente extends javax.swing.JFrame {
         this.jLabel6 = jLabel6;
     }
 
-    public JLabel getjLabel7() {
-        return jLabel7;
-    }
-
-    public void setjLabel7(JLabel jLabel7) {
-        this.jLabel7 = jLabel7;
-    }
+    
 
     public JLabel getjLabel8() {
         return jLabel8;
@@ -210,11 +198,9 @@ public class CadastrarNovoCliente extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         entrada_nome = new javax.swing.JTextField();
         entrada_cpf = new javax.swing.JTextField();
         entrada_senha = new javax.swing.JTextField();
-        entrada_saldo = new javax.swing.JTextField();
         btCadastroCliente = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
@@ -260,11 +246,6 @@ public class CadastrarNovoCliente extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Senha:");
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Saldo:");
-
         btCadastroCliente.setBackground(new java.awt.Color(51, 255, 51));
         btCadastroCliente.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btCadastroCliente.setForeground(new java.awt.Color(0, 0, 0));
@@ -280,22 +261,20 @@ public class CadastrarNovoCliente extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(entrada_saldo, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(entrada_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(entrada_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(entrada_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(115, 115, 115)
                         .addComponent(btCadastroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
@@ -315,12 +294,8 @@ public class CadastrarNovoCliente extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(entrada_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(entrada_saldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addComponent(btCadastroCliente)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
@@ -361,7 +336,7 @@ public class CadastrarNovoCliente extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(29, 29, 29)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -404,6 +379,8 @@ public class CadastrarNovoCliente extends javax.swing.JFrame {
 
     private void btCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastroClienteActionPerformed
         control.salvarNovoCliente();
+        this.dispose();
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_btCadastroClienteActionPerformed
 
@@ -447,7 +424,6 @@ public class CadastrarNovoCliente extends javax.swing.JFrame {
     private javax.swing.JButton btCadastroCliente;
     private javax.swing.JTextField entrada_cpf;
     private javax.swing.JTextField entrada_nome;
-    private javax.swing.JTextField entrada_saldo;
     private javax.swing.JTextField entrada_senha;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -456,7 +432,6 @@ public class CadastrarNovoCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

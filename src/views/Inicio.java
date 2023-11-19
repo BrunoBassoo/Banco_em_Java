@@ -177,14 +177,14 @@ public class Inicio extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         EntrarCliente ec = new EntrarCliente();
         ec.setVisible(true);
-        ec.setTitle("Área do Cliente");
+        ec.setTitle("Login do Cliente");
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
     EntrarGerente eg = new EntrarGerente();
     eg.setVisible(true);
-    eg.setTitle("Área do Gerente");
+    eg.setTitle("Login do Gerente");
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 

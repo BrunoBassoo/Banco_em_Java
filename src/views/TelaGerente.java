@@ -60,6 +60,7 @@ public class TelaGerente extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Área do gerente");
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -124,6 +125,11 @@ public class TelaGerente extends javax.swing.JFrame {
         botao_saldo_contas.setForeground(new java.awt.Color(0, 0, 0));
         botao_saldo_contas.setText("Exibir saldo das contas do cliente!");
         botao_saldo_contas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botao_saldo_contas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botao_saldo_contasActionPerformed(evt);
+            }
+        });
 
         botao_listas_contas.setBackground(new java.awt.Color(255, 255, 255));
         botao_listas_contas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -248,6 +254,7 @@ public class TelaGerente extends javax.swing.JFrame {
     private void botao_cadastrar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_cadastrar_clienteActionPerformed
         CadastrarNovoCliente cnc = new CadastrarNovoCliente();
         cnc.setVisible(true);
+        cnc.setTitle("Cadastro do cliente");
         // TODO add your handling code here:
     }//GEN-LAST:event_botao_cadastrar_clienteActionPerformed
 
@@ -259,20 +266,30 @@ public class TelaGerente extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         ExcluirCliente ec = new ExcluirCliente();
         ec.setVisible(true);
+        ec.setTitle("Excluir cliente");
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void botao_criar_contaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_criar_contaActionPerformed
         CriarConta cc = new CriarConta();
         cc.setVisible(true);
+        cc.setTitle("Criar contas");
 // TODO add your handling code here:
     }//GEN-LAST:event_botao_criar_contaActionPerformed
 
     private void botao_listas_contasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_listas_contasActionPerformed
         ListarClientela lc = new ListarClientela();
         lc.setVisible(true);
+        lc.setTitle("Listar cliente");
         // TODO add your handling code here:
     }//GEN-LAST:event_botao_listas_contasActionPerformed
+
+    private void botao_saldo_contasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_saldo_contasActionPerformed
+        ExibirSaldoTotal est = new ExibirSaldoTotal();
+        est.setVisible(true);
+        est.setTitle("Exibir Saldo");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botao_saldo_contasActionPerformed
 
     /**
      * @param args the command line arguments

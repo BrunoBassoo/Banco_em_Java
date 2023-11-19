@@ -41,7 +41,6 @@ public class DB_Gerente {
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.execute();
         ResultSet resultado = statement.getResultSet();
-        System.out.println(resultado);
         return resultado;
     }
 }

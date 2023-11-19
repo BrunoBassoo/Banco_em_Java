@@ -24,12 +24,11 @@ public class ControllerCadastroCliente {
         String nome = view.getEntrada_nome().getText();
         String senha = view.getEntrada_senha().getText();
         String CPF = view.getEntrada_cpf().getText();
-        double saldo = Double.parseDouble(view.getEntrada_saldo().getText());
-        if(nome.equals(null) && senha.equals(null) && CPF.equals(null)){
+        if(nome.equals("") && senha.equals("") && CPF.equals("")){
             JOptionPane.showMessageDialog(view,"SELECIONE OS CAMPOS CORRETAMENTE!", "Aviso", JOptionPane.ERROR_MESSAGE);
         }else{
             // pessando os valores para o objeto Cliente
-            Cliente cliente = new Cliente(nome,senha,CPF,saldo);
+            Cliente cliente = new Cliente(nome,senha,CPF);
             String cliente_cpf = cliente.getCpf();
             conexao_banco conexao = new conexao_banco();
             try{

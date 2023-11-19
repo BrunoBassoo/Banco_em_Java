@@ -556,18 +556,23 @@ public class CriarConta extends javax.swing.JFrame {
     private void btSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalarioActionPerformed
         InfoSalario is = new InfoSalario();
         is.setVisible(true);
+        is.setTitle("Informações conta salario");
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btSalarioActionPerformed
 
     private void btCorrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCorrenteActionPerformed
         InfoCorrente ic = new InfoCorrente();
         ic.setVisible(true);
+        ic.setTitle("Informações conta corrente");
         // TODO add your handling code here:
     }//GEN-LAST:event_btCorrenteActionPerformed
 
     private void btPoupancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPoupancaActionPerformed
         InfoPoupanca ip = new InfoPoupanca();
         ip.setVisible(true);
+        ip.setTitle("Informações conta poupanca");
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btPoupancaActionPerformed
 
@@ -577,13 +582,13 @@ public class CriarConta extends javax.swing.JFrame {
         }
         else if(rbSalario.isSelected() || rbCorrente.isSelected() || rbPoupança.isSelected()   ){
             if(rbSalario.isSelected()){
-                //control.CriarContaSalario();
+                control.CriarContaSalario();
             }
             else if(rbCorrente.isSelected()){
                 control.CriarContaCorrente();
             } 
             else if(rbPoupança.isSelected()){
-                //control.CriarContaPoupanca();
+                control.CriarContaPoupanca();
             } 
         } else {
             JOptionPane.showMessageDialog(this,"Selecione um tipo de conta!", "Aviso", JOptionPane.ERROR_MESSAGE);
